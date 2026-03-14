@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, HoverTool, CustomJS, Slider
-from bokeh.tile_providers import get_provider, Vendors
+from bokeh.tile_providers import get_provider
+import xyzservices.providers as xyz
 from bokeh.layouts import column
 from bokeh.embed import file_html
 from bokeh.resources import CDN
@@ -26,7 +27,7 @@ df["size"] = df["mag"] * 3 + 2
 source = ColumnDataSource(df)
 full_source = ColumnDataSource(df)
 
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
+tile_provider = get_provider(xyz.CartoDB.Positron)
 
 p = figure(
     title="Global Earthquake Dashboard",
