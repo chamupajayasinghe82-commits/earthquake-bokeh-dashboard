@@ -12,6 +12,7 @@ df["latitude"] = df["latitude"].astype(float)
 df["longitude"] = df["longitude"].astype(float)
 df["mag"] = df["mag"].astype(float)
 df = df.dropna(subset=["latitude", "longitude", "mag"])
+df = df[df["mag"] > 0]  
 
 def latlon_to_mercator(lat, lon):
     k = 6378137
@@ -32,7 +33,7 @@ p = figure(
     width=900, height=600,
     tools="pan,wheel_zoom,box_zoom,reset,save"
 )
-p.add_tile("CartoDB Positron")
+p.add_tile("OSM")
 
 p.circle(
     x="x", y="y", size="size",
