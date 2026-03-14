@@ -7,7 +7,7 @@ from bokeh.tile_providers import get_provider, Vendors
 from bokeh.layouts import column
 
 # Load dataset
-df = pd.read_csv("earthquakes.csv")
+df = pd.read_csv("C:\\Users\\MSI\\Downloads\\bokeh_project\\earthquakes_app\\earthquakes.csv")
 
 # Remove rows with missing values
 df = df.dropna(subset=["latitude", "longitude", "mag"])
