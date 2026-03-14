@@ -8,7 +8,7 @@ from bokeh.embed import file_html
 from bokeh.resources import CDN
 
 # Load dataset
-df = pd.read_csv("C:\\Users\\MSI\\Downloads\\bokeh_project\\earthquakes_app\\earthquakes.csv")
+df = pd.read_csv("earthquakes.csv")
 df["latitude"] = df["latitude"].astype(float)
 df["longitude"] = df["longitude"].astype(float)
 df["mag"] = df["mag"].astype(float)
@@ -78,4 +78,5 @@ html = file_html(layout, CDN, "Earthquake Dashboard")
 with open("index.html", "w") as f:
     f.write(html)
 
+print("index.html generated!")
 print("index.html generated!")
