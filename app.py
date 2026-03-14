@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, HoverTool, CustomJS, Slider
-from bokeh.tile_providers import get_provider
-import xyzservices.providers as xyz
 from bokeh.layouts import column
 from bokeh.embed import file_html
 from bokeh.resources import CDN
@@ -36,7 +34,7 @@ p = figure(
     width=900, height=600,
     tools="pan,wheel_zoom,box_zoom,reset,save"
 )
-p.add_tile(tile_provider)
+p.add_tile("CartoDB Positron")
 
 circles = p.circle(
     x="x", y="y", size="size",
