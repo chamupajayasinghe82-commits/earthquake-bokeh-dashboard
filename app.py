@@ -25,8 +25,6 @@ df["size"] = df["mag"] * 3 + 2
 source = ColumnDataSource(df)
 full_source = ColumnDataSource(df)
 
-tile_provider = get_provider(xyz.CartoDB.Positron)
-
 p = figure(
     title="Global Earthquake Dashboard",
     x_axis_type="mercator",
@@ -36,7 +34,7 @@ p = figure(
 )
 p.add_tile("CartoDB Positron")
 
-circles = p.circle(
+p.circle(
     x="x", y="y", size="size",
     fill_color="red", fill_alpha=0.6,
     line_color=None, source=source
@@ -51,7 +49,6 @@ p.add_tools(hover)
 
 slider = Slider(start=0, end=10, value=0, step=0.1, title="Minimum Magnitude")
 
-# Use CustomJS instead of Python callback
 callback = CustomJS(args=dict(source=source, full=full_source, slider=slider), code="""
     const min_mag = slider.value;
     const full_data = full.data;
@@ -77,5 +74,4 @@ html = file_html(layout, CDN, "Earthquake Dashboard")
 with open("index.html", "w") as f:
     f.write(html)
 
-print("index.html generated!")
 print("index.html generated!")
